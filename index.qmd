@@ -1,0 +1,208 @@
+---
+title: "Bases de datos del Vector del Dengue (Huevos y Adultos)"
+subtitle: Felipe Antonio Dzul Manzanilla | CVU 6172953
+format: 
+  html:
+      theme: flatly
+      code-fold: true
+      toc: true
+      number-sections: true
+title-block-banner: true
+editor: visual
+execute:
+  freeze: auto
+---
+
+## Introdución
+
+El programa de prevención y control del dengue implementó desde el 2010 un sistema de vigilancia entomológica basado en la instalación de ovitrampas en al menos una localidad de cada estado, estos dispositivos son empleados en un muestreo sistemático carácterizado por instalar cuatro ovitrampas por manzana (una ovitrampa por cada lado de la manzana) con un intervalo de separación de cada 4 a 6 manzanas en zonas planas y con un intervalo de separación de 2 a 3 manzanas en zonas con relieve (Figura 1). Las ovitrampas se instalan en el exterior del domicilio en lugares sombreados a una altura de 1.5 metros.
+
+```{r, echo = FALSE, figura1,fig.cap= "Figura 1. Ilustración del muestreo de la vigilancia entomológica con ovitrampas en México."}
+#| warning: False
+#| message: False
+#| echo: true
+#| output: true
+#| out.width: "100%"
+path <- "/Users/felipedzul/Dropbox/CENAPRECE/2024/31_yucatan/DescargaOvitrampasMesFco.txt"
+deneggs::blocks_surveillance(locality = "Ticul",
+                             cve_edo = "31",
+                             path_coords = path)
+```
+
+Las ovitrampas utilizadas en México consisten en recipientes de plástico negro con una capacidad de un litro cubierto en su superficie interior con papel pellon (F-1600), a la cual se le incorpora agua potable hasta antes de 2 cm de su borde superior (Figura 2). Semanalmente, se le retira el sustrato de ovoposición a las ovitrampas y se les cambia por un sustrato nuevo y agua. El número de huevos en la papeleta de cada ovitrampa instalada es contado y registrado. La información asociada a la papeleta (localidad, municipio, manzana, sector, fecha, colector y número de huevos) es capturado en el Módulo de Vigilancia Entomológica y Control Integral del Vector del Sistema de Monitoreo Integral de Vectores de la Secretaría de Salud Federal (http://geosis.mx/aplicaciones/sismv/). La descripción de los procesos de instalación y monitoreo puede encontrarse en la guía metodológica para la vigilancia entomológica con ovitrampas 12.
+
+```{=html}
+<style>
+.grid-container {
+  display: grid;
+  gap: 0px;
+  background-color: #FFFFFF;
+  padding: 1px;
+}
+
+.grid-item1 {
+  background-color: rgba(255, 255, 255);
+  text-align: center;
+  padding: 0px;
+  font-size: 1px;
+}
+
+
+.grid-item2 {
+  grid-column: 1 / span 3;
+  grid-row: 3;
+}
+</style>
+```
+</head>
+
+<body>
+
+::: grid-container
+::: grid-item1
+![](https://github.com/fdzul/deneggs/blob/master/IMG_6137.JPG?raw=true){width="98%"}
+:::
+
+::: grid-item1
+![](https://github.com/fdzul/deneggs/blob/master/IMG_6176.JPG?raw=true){width="98%"}
+:::
+
+::: grid-item1
+![](https://github.com/fdzul/deneggs/blob/master/IMG_6186.JPG?raw=true){width="98%"}
+:::
+
+::: grid-item2
+![](https://github.com/fdzul/deneggs/blob/master/IMG_6150.JPG?raw=true){width="98%"}
+:::
+:::
+
+<figcaption>Figura 2. Ovitrampa y sustrato de ovoposición</figcaption>
+
+</body>
+
+</html>
+
+En relación con la vigilancia entomovirológica, la colecta de adultos en reposo permite la detección temprana de virus en mosquitos y podría facilitar acciones tempranas y específicas de control de vectores, si se implementa y utiliza de manera oportuna. La vigilancia entomológica en la Secretaría de Salud inicio desde el 2009, cuando el InDRE (Instituto de Diagnóstico y Referencia Epidemiológicos Dr. Manuel Martínez Báez) planteó un proyecto de investigación en Morelos, Guadalajara y Guerrero. Posteriormente, con la introdución de chikungunya y Zika en México, estados como Guerrero implementaron la Vigilancia Entomovirológica en la Ciudad de Acapulco. Los resultados permitieron detectar la circulación del virus de chikungunya en Aedes aegypti con antelación a los primeros casos en humanos. El análisis retrospectivo de las muestras de RNA permitió comprobar que los virus del dengue, chikungunya y Zika circularon en mosquitos al mismo tiempo15, 16. Durante dos años consecutivos (febrero 2017 a noviembre 2018) la vigilancia entomovirológica se realizó en 18 estados de la republica mexicana (Baja California Norte, Campeche, Chiapas, Chihuahua, Durango, Estado de México, Guerrero, Hidalgo, Jalisco, México City, Oaxaca, Puebla, Tabasco, Tamaulipas, Veracruz and Yucatán)17. Actualmente la vigilancia entomovirológica se lleva a cabo en cuatro localidades de México: Acapulco en el estado de Guerrero, Jojutla en el estado de Morelos, Tapachula en el estado de Chiapas y en el Puerto de Veracruz y Boca del Río en el estado de Veracruz 18.
+
+## Objetivo
+
+Describir brevemente las bases de datos del vector del dengue.
+
+## Material y Métodos
+
+El proceso de la integración de las bases de datos entomológicos fue realizado en dos etapas (acceso y preprocesamiento). En la primera etapa, las bases de datos (lecturas de ovitrampas y coordenadas geográficas) de cada estado y año, fueron obtenidas en el Módulo de Vigilancia Entomológica y Control Integral del Vector del Sistema de Monitoreo Integral de Vectores de la Secretaría de Salud Federal (http://geosis.mx/aplicaciones/sismv/). Posteriormente, en la etapa de preprocesamiento se integraron en una sola base, las bases de todos los estados, se eliminaron valores nulos en la variable de respuesta (número de huevos de *Ae. aegypti*) y se garantizó que todas las covariables tuvieran un formato acorde al dato. 
+
+## Resultados
+
+El sistema de vigilancia entomológica con ovitrampas opera en todo el país y todos los estados han instalado la vigilancia entomológica con ovitrampas en al menos una localidad, excepto el estado de Tlaxcala (Figura 3, Figura 4). 
+
+En el 2024, en 718 localidades se instalaron ovitrampas con la finalidad monitorear la distribución espacial y temporal de la abundancia y prevalencia de *Ae. aegypti* en las áreas metropolitanas y endémicas de la transmisión del dengue en México (Figura 4).
+
+La base de datos de la vigilancia entomológica con ovitrampas, cuenta con más de 100 millones de registros ($102,089,940$) a lo largo del periodo de estudio (2012-2024, excepto 2020, debido a que por la pandemia de COVID 19 no se instalaron las ovitrampas)
+
+
+```{r, echo=FALSE, fig.cap= "Figura 3. Número de estados, municipios, localidades y ovitrampas por año en México"}
+# Step 1.1 load ovitraps (2012-2019)
+load("~/Library/CloudStorage/OneDrive-Personal/automatic_read_ovitraps/8.RData/ovitraps/ovitraps_2012_2019_for_encript.RData")
+
+# Step 1.2 load ovitraps (2021-2024)
+load("~/Library/CloudStorage/OneDrive-Personal/automatic_read_ovitraps/8.RData/ovitraps/ovitraps_2021_2024_for_encript.RData")
+
+
+y  <- y |>
+    dplyr::mutate(year = lubridate::year(date)) |>
+    dplyr::mutate(cve_edo = stringr::str_sub(clave,
+                                             start = 1,
+                                             end = 2),
+                  cve_mpo = stringr::str_sub(clave,
+                                             start = 1,
+                                             end = 5),
+                  cve_loc = stringr::str_sub(clave,
+                                             start = 1,
+                                             end = 9)) |>
+    dplyr::group_by(year) |>
+    dplyr::summarise(edo = length(unique(cve_edo)),
+                     mun = length(unique(cve_mpo)),
+                     loc = length(unique(cve_loc)),
+                     ovitraps = length(unique(ovitrap)))
+
+x  <- x |>
+    dplyr::mutate(year = lubridate::year(date)) |>
+    dplyr::mutate(cve_edo = stringr::str_sub(clave,
+                                             start = 1,
+                                             end = 2),
+                  cve_mpo = stringr::str_sub(clave,
+                                             start = 1,
+                                             end = 5),
+                  cve_loc = stringr::str_sub(clave,
+                                             start = 1,
+                                             end = 9)) |>
+    dplyr::group_by(year) |>
+    dplyr::summarise(edo = length(unique(cve_edo)),
+                     mun = length(unique(cve_mpo)),
+                     loc = length(unique(cve_loc)),
+                     ovitraps = length(unique(ovitrap)))
+```
+
+
+```{r, echo=FALSE, fig.cap= "Figura 4. Distribución de localidades con ovitrampas en el 2024"}
+# Step 1. load ovitraps (2021-2024)
+load("~/Library/CloudStorage/OneDrive-Personal/automatic_read_ovitraps/8.RData/ovitraps/ovitraps_2021_2024_for_encript.RData")
+
+x  <- x |>
+    dplyr::mutate(year = lubridate::year(date)) |>
+    dplyr::filter(year == 2024) |>
+    dplyr::mutate(cve_edo = stringr::str_sub(clave,
+                                             start = 1,
+                                             end = 2),
+                  cve_mpo = stringr::str_sub(clave,
+                                             start = 1,
+                                             end = 5),
+                  cve_loc = stringr::str_sub(clave,
+                                             start = 1,
+                                             end = 9)) |>
+    dplyr::group_by(cve_edo, cve_mpo, cve_loc) |>
+    dplyr::summarise(ovitraps = length(unique(ovitrap)), 
+                     .groups = "drop")
+
+
+# Step 2. load the iter loc ####
+load("~/Library/CloudStorage/OneDrive-Personal/automatic_read_iter/8.RData/iter_2020_loc.RData")
+iter_2020_loc <- iter_2020_loc |>
+        dplyr::select(entidad, nom_ent,  mun,
+                      nom_mun, loc,  nom_loc,
+                      longitud, latitud, altitud,
+                      pobtot) |>
+    dplyr::mutate(cve_loc = paste(entidad, mun, loc, sep = "")) |>
+    dplyr::select(-entidad, -mun, -loc)
+
+# Step 3. left joint ####
+loc_ovitraps_coordinates <- dplyr::left_join(x = x,
+                                             y = iter_2020_loc,
+                                             by = "cve_loc") |>
+    dplyr::filter(!is.na(longitud)) |>
+    sf::st_as_sf(coords = c("longitud", "latitud"),
+                 crs = 4326)
+
+mapview::mapview(loc_ovitraps_coordinates,
+                 zcol = "ovitraps",
+                 layer.name = "Ovitrampas")
+
+```
+
+
+## Bases de datos encriptadas
+
+Debido a la cantidad de registros masivos de ovitrampas, resulta muy costoso computacionalmente procesar la base de datos para su encriptación, razón por la cual solo se proporciona dos años como ejemplo y muestra de las base de datos encriptadas. 
+
+Las bases de datos encriptadas pueden accesarse a través de los siguientes enlaces:
+
+   - [ovitrap_datast_2012]()
+
+   - [ovitrap_datast_2024]()
+
+
+
+
+
+
